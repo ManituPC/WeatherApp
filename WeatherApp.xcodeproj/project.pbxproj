@@ -15,6 +15,7 @@
 		005D7D5B237B4F2600B324CE /* NewCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D7D5A237B4F2600B324CE /* NewCityViewController.swift */; };
 		005D7D60237B545600B324CE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D7D5F237B545600B324CE /* City.swift */; };
 		005D7D62237B568600B324CE /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D7D61237B568600B324CE /* ResponseModel.swift */; };
+		005D7D65237B579C00B324CE /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D7D64237B579C00B324CE /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		005D7D5A237B4F2600B324CE /* NewCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCityViewController.swift; sourceTree = "<group>"; };
 		005D7D5F237B545600B324CE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		005D7D61237B568600B324CE /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		005D7D64237B579C00B324CE /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				005D7D5E237B542600B324CE /* Models */,
+				005D7D63237B576900B324CE /* Service */,
 				005D7D5C237B4F5400B324CE /* MainScreen */,
 				005D7D5D237B4F6E00B324CE /* NewCityScreen */,
 				005D7D46237B36B400B324CE /* AppDelegate.swift */,
@@ -95,6 +98,14 @@
 				005D7D61237B568600B324CE /* ResponseModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		005D7D63237B576900B324CE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				005D7D64237B579C00B324CE /* APIManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005D7D65237B579C00B324CE /* APIManager.swift in Sources */,
 				005D7D4B237B36B400B324CE /* MainViewController.swift in Sources */,
 				005D7D60237B545600B324CE /* City.swift in Sources */,
 				005D7D5B237B4F2600B324CE /* NewCityViewController.swift in Sources */,
