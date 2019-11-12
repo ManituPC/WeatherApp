@@ -23,4 +23,16 @@ class NewCityViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
+    
+    
+    // MARK:- Actions
+    
+    @IBAction func cancel() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func done() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
