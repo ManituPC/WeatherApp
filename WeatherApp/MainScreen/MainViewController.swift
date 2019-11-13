@@ -9,15 +9,26 @@
 import UIKit
 
 class MainViewController: UITableViewController {
+    
+    var cityList = [City]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let city1 = City()
+        city1.name = "London"
+        city1.time = "12:11 AM"
+        city1.weatherName = "Mist"
+        city1.weatherDiscr = "Туман - чё тут ещё..."
+        city1.humidity = 75
+        city1.windSpeed = 2
+        cityList.append(city1)
     }
     
     // MARK:- Table View Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cityList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
