@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITableViewController {
+class MainViewController: UITableViewController, AddNewCityVCDelegate {
     
     var cityList = [City]()
 
@@ -24,6 +24,23 @@ class MainViewController: UITableViewController {
         city1.windSpeed = 2
         cityList.append(city1)
     }
+    
+    // MARK:- Add Item ViewController Delegates
+    func addNewCityVCDidCancel(_ controller: NewCityViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addNewCityVC(_ controller: NewCityViewController, didFinishAdding city: City) {
+        let newRowIndex = cityList.count
+        cityList.append(city)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     // MARK:- Table View Data Source
     
@@ -43,6 +60,15 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 190.0
+    }
+    
+    // MARK:- Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddCity" {
+            let controller = segue.destination as! NewCityViewController
+            controller.delegate = self
+        }
     }
 }
 

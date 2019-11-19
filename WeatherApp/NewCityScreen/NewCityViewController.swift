@@ -8,7 +8,16 @@
 
 import UIKit
 
+
+protocol AddNewCityVCDelegate: class {
+    func addNewCityVCDidCancel(_ controller: NewCityViewController)
+    
+    func addNewCityVC(_ controller: NewCityViewController, didFinishAdding city: City)
+}
+
 class NewCityViewController: UITableViewController, UITextFieldDelegate {
+    
+    weak var delegate: AddNewCityVCDelegate?
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
@@ -36,13 +45,14 @@ class NewCityViewController: UITableViewController, UITextFieldDelegate {
     // MARK:- Actions
     
     @IBAction func cancel() {
-        navigationController?.popViewController(animated: true)
+        delegate?.addNewCityVCDidCancel(self)
     }
     
     @IBAction func done() {
-        print("Contents of the text field: \(textField.text!)")
-
-        navigationController?.popViewController(animated: true)
+        let city = City()
+        city.name = textField.text!
+        
+        delegate?.addNewCityVC(self, didFinishAdding: city)
     }
     
     // MARK:- Table View Delegates
