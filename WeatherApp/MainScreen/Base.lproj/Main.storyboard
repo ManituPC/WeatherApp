@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CityItem" rowHeight="190" id="mr3-L9-WSD">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CityItem" rowHeight="190" id="mr3-L9-WSD" customClass="CityTableViewCell" customModule="WeatherApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="190"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mr3-L9-WSD" id="mX4-fL-M3H">
@@ -65,14 +65,14 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999 kmh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBW-bh-SYe">
-                                            <rect key="frame" x="64" y="132" width="80" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBW-bh-SYe">
+                                            <rect key="frame" x="64" y="132" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8C-d7-fXx">
-                                            <rect key="frame" x="95" y="161" width="56" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8C-d7-fXx">
+                                            <rect key="frame" x="95" y="161" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -89,9 +89,22 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZV-aD-dsd">
+                                            <rect key="frame" x="145" y="161" width="14" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kmh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFw-MD-XDR">
+                                            <rect key="frame" x="114" y="132" width="33" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="kI1-7X-YUy" firstAttribute="top" secondItem="5es-sj-7n3" secondAttribute="bottom" constant="8.5" id="1TY-AH-M0I"/>
+                                        <constraint firstItem="PFw-MD-XDR" firstAttribute="leading" secondItem="LBW-bh-SYe" secondAttribute="trailing" constant="8" id="5Kn-tn-eon"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="gnt-fN-uls" secondAttribute="trailing" constant="0.5" id="Ahc-Px-qKb"/>
                                         <constraint firstAttribute="bottom" secondItem="a9c-cK-ya2" secondAttribute="bottom" id="B3c-4s-zjv"/>
                                         <constraint firstItem="kI1-7X-YUy" firstAttribute="leading" secondItem="mX4-fL-M3H" secondAttribute="leading" constant="15" id="DAh-6n-rlq"/>
@@ -110,17 +123,29 @@
                                         <constraint firstItem="a9c-cK-ya2" firstAttribute="top" secondItem="mX4-fL-M3H" secondAttribute="top" id="df4-ly-FZQ"/>
                                         <constraint firstItem="e8C-d7-fXx" firstAttribute="leading" secondItem="2Hj-EX-fMV" secondAttribute="trailing" constant="9" id="fLj-E6-ntH"/>
                                         <constraint firstAttribute="trailing" secondItem="5es-sj-7n3" secondAttribute="trailing" constant="7.5" id="hAq-V5-cfb"/>
+                                        <constraint firstItem="ZZV-aD-dsd" firstAttribute="top" secondItem="5es-sj-7n3" secondAttribute="bottom" constant="37.5" id="kcl-MI-06J"/>
                                         <constraint firstItem="5es-sj-7n3" firstAttribute="top" secondItem="fUi-Cf-ykX" secondAttribute="bottom" constant="8" id="mzC-Fw-WyQ"/>
+                                        <constraint firstItem="ZZV-aD-dsd" firstAttribute="leading" secondItem="e8C-d7-fXx" secondAttribute="trailing" constant="8" id="qOc-wl-dgK"/>
                                         <constraint firstItem="5es-sj-7n3" firstAttribute="leading" secondItem="mX4-fL-M3H" secondAttribute="leading" constant="15" id="qVC-JV-uiJ"/>
                                         <constraint firstItem="2Hj-EX-fMV" firstAttribute="leading" secondItem="mX4-fL-M3H" secondAttribute="leading" constant="15" id="spr-vh-vSF"/>
                                         <constraint firstItem="Zg2-cl-e3T" firstAttribute="top" secondItem="mX4-fL-M3H" secondAttribute="topMargin" constant="5" id="u1w-K4-PFm"/>
                                         <constraint firstItem="DqI-ot-gpR" firstAttribute="leading" secondItem="mX4-fL-M3H" secondAttribute="leadingMargin" id="vhF-P0-M2W"/>
+                                        <constraint firstItem="PFw-MD-XDR" firstAttribute="top" secondItem="5es-sj-7n3" secondAttribute="bottom" constant="8.5" id="wNo-SF-TLa"/>
                                         <constraint firstItem="a9c-cK-ya2" firstAttribute="leading" secondItem="mX4-fL-M3H" secondAttribute="leading" id="wU4-HW-SZ8"/>
                                         <constraint firstItem="LBW-bh-SYe" firstAttribute="top" secondItem="5es-sj-7n3" secondAttribute="bottom" constant="8.5" id="xDt-ly-dfd"/>
                                         <constraint firstItem="a9c-cK-ya2" firstAttribute="top" secondItem="mX4-fL-M3H" secondAttribute="top" id="zNd-w7-Znr"/>
                                         <constraint firstItem="fUi-Cf-ykX" firstAttribute="top" secondItem="fDP-R7-WbQ" secondAttribute="bottom" constant="8" id="zZL-db-Xlp"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityNameLabel" destination="Zg2-cl-e3T" id="Zqi-pL-ahu"/>
+                                    <outlet property="degreesLabel" destination="DqI-ot-gpR" id="K0c-4x-OCz"/>
+                                    <outlet property="humidityLabel" destination="e8C-d7-fXx" id="qVB-NQ-QiT"/>
+                                    <outlet property="timeLabel" destination="gnt-fN-uls" id="3s8-z3-K6q"/>
+                                    <outlet property="weatherDescrLabel" destination="5es-sj-7n3" id="4kI-ra-XPl"/>
+                                    <outlet property="weatherNameLabel" destination="fUi-Cf-ykX" id="vzP-LI-eQ1"/>
+                                    <outlet property="windSpeedLabel" destination="LBW-bh-SYe" id="ugR-xL-G0T"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

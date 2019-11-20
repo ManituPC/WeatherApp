@@ -17,10 +17,11 @@ class MainViewController: UITableViewController, AddNewCityVCDelegate {
         
         let city1 = City()
         city1.name = "London"
+        city1.temp = 46
         city1.time = "12:11 AM"
-        city1.weatherName = "Mist"
-        city1.weatherDiscr = "Туман - чё тут ещё..."
-        city1.humidity = 75
+        city1.weatherName = "Sunny"
+        city1.weatherDiscr = "Pizdec kak zharko..."
+        city1.humidity = 10
         city1.windSpeed = 2
         cityList.append(city1)
     }
@@ -49,8 +50,9 @@ class MainViewController: UITableViewController, AddNewCityVCDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityItem", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityItem", for: indexPath) as! CityTableViewCell
+        let city = cityList[indexPath.row]
+        cell.city = city
         return cell
     }
     
