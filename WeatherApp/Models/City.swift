@@ -11,9 +11,10 @@ import Foundation
 
 class City {
     var name = ""
+    var temp = 0
+    var time = ""
     var weatherName = ""
-    var time = 0
-    var waetherDiscr = ""
+    var weatherDiscr = ""
     var humidity = 0
     var windSpeed = 0
 }
