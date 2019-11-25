@@ -29,13 +29,15 @@ class CityTableViewCell: UITableViewCell {
 
     var city: City? {
         didSet {
-            cityNameLabel.text = city?.name
-            degreesLabel.text = String(describing: city?.temp)
-            timeLabel.text = city?.time
-            weatherNameLabel.text = city?.weatherName
-            weatherDescrLabel.text = city?.weatherDiscr
-            windSpeedLabel.text = String(describing: city?.windSpeed)
-            humidityLabel.text = String(describing: city?.humidity)
+            if let city = city {
+                cityNameLabel.text = city.name
+                degreesLabel.text = String(describing: city.temp)
+                timeLabel.text = city.time
+                weatherNameLabel.text = city.weatherName
+                weatherDescrLabel.text = city.weatherDiscr
+                windSpeedLabel.text = String(describing: city.windSpeed)
+                humidityLabel.text = String(describing: city.humidity)
+            }
         }
     }
 }
