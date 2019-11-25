@@ -15,15 +15,7 @@ class MainViewController: UITableViewController, AddNewCityVCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let city1 = City()
-        city1.name = "London"
-        city1.temp = 46
-        city1.time = "12:11 AM"
-        city1.weatherName = "Sunny"
-        city1.weatherDiscr = "Pizdec kak zharko..."
-        city1.humidity = 10
-        city1.windSpeed = 2
-        cityList.append(city1)
+        loadCityList()
     }
     
     // MARK:- Add Item ViewController Delegates
@@ -40,6 +32,20 @@ class MainViewController: UITableViewController, AddNewCityVCDelegate {
         tableView.insertRows(at: indexPaths, with: .automatic)
         
         navigationController?.popViewController(animated: true)
+        
+        saveCityList()
+    }
+    
+    func addNewCityVC(_ controller: NewCityViewController, didFinishEditing city: City) {
+        if let index = cityList.firstIndex(of: city) {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell as! CityTableViewCell, with: city)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+        
+        saveCityList()
     }
     
     
@@ -70,6 +76,54 @@ class MainViewController: UITableViewController, AddNewCityVCDelegate {
         if segue.identifier == "AddCity" {
             let controller = segue.destination as! NewCityViewController
             controller.delegate = self
+        } else if segue.identifier == "EditCity" {
+            let controller = segue.destination as! NewCityViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.cityToEdit = cityList[indexPath.row]
+            }
+        }
+    }
+    
+    // MARK: - Read and write data
+    
+    func documentsDirectory() -> URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return path[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("WeatherApp.plist")
+    }
+    
+    func saveCityList() {
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(cityList)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error encoding item array: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadCityList() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                cityList = try decoder.decode([City].self, from: data)
+            } catch {
+                print("Error decoding item array: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    // MARK: - Other
+    
+    func configureText(for cell: CityTableViewCell, with city: City) {
+        if let label = cell.cityNameLabel {
+            label.text = city.name
         }
     }
 }

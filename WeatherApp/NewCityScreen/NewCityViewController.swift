@@ -10,9 +10,12 @@ import UIKit
 
 
 protocol AddNewCityVCDelegate: class {
+    
     func addNewCityVCDidCancel(_ controller: NewCityViewController)
     
     func addNewCityVC(_ controller: NewCityViewController, didFinishAdding city: City)
+    
+    func addNewCityVC(_ controller: NewCityViewController, didFinishEditing city: City)
 }
 
 class NewCityViewController: UITableViewController, UITextFieldDelegate {
@@ -21,9 +24,17 @@ class NewCityViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
+    
+    var cityToEdit: City?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let city = cityToEdit {
+            title = "Edit City"
+            textField.text = city.name
+            doneBarButton.isEnabled = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,10 +60,15 @@ class NewCityViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func done() {
-        let city = City()
-        city.name = textField.text!
+        if let city = cityToEdit {
+            city.name = textField.text!
+            delegate?.addNewCityVC(self, didFinishEditing: city)
+        } else {
+            let city = City()
+            city.name = textField.text!
+            delegate?.addNewCityVC(self, didFinishAdding: city)
+        }
         
-        delegate?.addNewCityVC(self, didFinishAdding: city)
     }
     
     // MARK:- Table View Delegates

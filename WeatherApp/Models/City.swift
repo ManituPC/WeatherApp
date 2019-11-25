@@ -9,12 +9,12 @@
 import Foundation
 
 
-class City {
+class City: NSObject, Codable {
     var name = ""
     var temp = 0
-    var time = ""
-    var weatherName = ""
-    var weatherDiscr = ""
+    var time = "00:00 PM"
+    var weatherName = "Mist"
+    var weatherDiscr = "some weather"
     var humidity = 0
     var windSpeed = 0
 }
