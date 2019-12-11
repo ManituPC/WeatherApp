@@ -3,6 +3,8 @@ import CoreLocation
 
 class LocationService {
 
+    let default = LocationService()
+
     let locationManager = CLLocationManager()
 
     func setupLocationManager() {
@@ -35,6 +37,11 @@ class LocationService {
         case .authorizedAlways:
             break
         }
+    }
+
+    func setUserLocation() {
+        let location = locationManager.location?.coordinate
+        
     }
 }
 

@@ -15,6 +15,8 @@ class MainViewController: UITableViewController, AddNewCityVCDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        LocationService.default.checkLocationServices()
+        
         loadCityList()
     }
     
