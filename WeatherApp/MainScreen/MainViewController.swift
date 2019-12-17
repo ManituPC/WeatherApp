@@ -10,14 +10,17 @@ import UIKit
 
 class MainViewController: UITableViewController, AddNewCityVCDelegate {
     
+    let localService = LocationService()
     var cityList = [City]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        LocationService.default.checkLocationServices()
-        
         loadCityList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidLoad()
+        localService.checkLocationServices()
     }
     
     // MARK:- Add Item ViewController Delegates
