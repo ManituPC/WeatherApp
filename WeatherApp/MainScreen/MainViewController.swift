@@ -7,20 +7,65 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MainViewController: UITableViewController, AddNewCityVCDelegate {
-    
+            
     let localService = LocationService()
-    var cityList = [City]()
+    
+    let child = SpinnerViewController()
 
+    var cityList = [City]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadCityList()
+        
+        self.localService.checkLocationServices()
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            localService.authorizeStatusDidChange = { [weak self] in
+                
+                if self?.localService.currentLocation == nil {
+                    self?.createSpinnerView()
+                }
+
+                if let location = self?.localService.coordinate {
+                    self?.localService.currentLocation = self?.localService.getRegion(location: location)
+                }
+                
+                if self?.localService.coordinate != nil {
+                    self?.removeSpinnerView()
+                    print("\(self?.localService.currentLocation)")
+                }
+            }
+        case .denied:
+            // show alert
+            break
+        case .notDetermined:
+            self.localService.locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // show alert
+            break
+        case .authorizedAlways:
+            break
+        }
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidLoad()
-        localService.checkLocationServices()
+    func createSpinnerView() {
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func removeSpinnerView() {
+        child.willMove(toParent: nil)
+        child.view.removeFromSuperview()
+        child.removeFromParent()
     }
     
     // MARK:- Add Item ViewController Delegates

@@ -1,42 +1,46 @@
-import MapKit
 import CoreLocation
+import MapKit
 
 class LocationService: NSObject {
 
-    var currentLocation = ""
+    var currentLocation: String?
+    
+    var coordinate: CLLocation?
+    
+    var authorizeStatusDidChange: (() -> ())?
     
     let locationManager = CLLocationManager()
     
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestLocation()
+        locationManager.startUpdatingLocation()
     }
 
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
-            checklLocationAuthorization()
+            //checklLocationAuthorization()
         } else {
             // TODO: show alert
         }
     }
 
     func checklLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            currentLocation = getRegion()
-        case .denied:
-            // show alert
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            // show alert
-            break
-        case .authorizedAlways:
-            break
-        }
+//        switch CLLocationManager.authorizationStatus() {
+//        case .authorizedWhenInUse:
+//            currentLocation = getRegion()
+//        case .denied:
+//            // show alert
+//            break
+//        case .notDetermined:
+//            locationManager.requestWhenInUseAuthorization()
+//        case .restricted:
+//            // show alert
+//            break
+//        case .authorizedAlways:
+//            break
+//        }
     }
 
     func getUserLocation() -> CLLocation {
@@ -47,41 +51,52 @@ class LocationService: NSObject {
         return location
     }
     
-    func getRegion() -> String {
-        var cityName = ""
-        let location = getUserLocation()
+    func getRegion(location: CLLocation) -> String? {
+        var cityName: String?
         let geoCoder = CLGeocoder()
         
-        print("******** User location is: \(location) ********")
+        print("1) !!!!! User location is: \(location)\n********")
         
         geoCoder.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
-            guard let self = self else { return }
             
+            print("2) !!!!!!! in reverseGeocodeLocation() method")
+            guard self != nil else { return }
+
             if let _ = error {
                 // Show alert
                 return
             }
-            
+
             guard let placemark = placemarks?.first else {
                 // show alert
                 return
             }
-            
-            cityName = placemark.locality ?? "nil"
-            print("!!!!!! \(cityName)")
+
+            if let name = placemark.locality {
+                cityName = name
+                
+                print("!!!!!! cityName = \(cityName)")
+            }
         }
         
+        print("##### cityName = \(cityName)")
+
         return cityName
     }
 }
 
 extension LocationService: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // TODO:
+        authorizeStatusDidChange?()
+
+        if let newLocation = locations.last {
+            self.coordinate = newLocation
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        // TODO:
+        //authorizeStatusDidChange?()
+        print("!!!!!! didChangeAuthorization")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

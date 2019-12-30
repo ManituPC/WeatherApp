@@ -17,6 +17,7 @@
 		005D7D60237B545600B324CE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D7D5F237B545600B324CE /* City.swift */; };
 		005D7D62237B568600B324CE /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D7D61237B568600B324CE /* ResponseModel.swift */; };
 		005D7D65237B579C00B324CE /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D7D64237B579C00B324CE /* APIManager.swift */; };
+		00AD784D23B6678D0057B887 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AD784C23B6678D0057B887 /* SpinnerViewController.swift */; };
 		00D1045D23A3B82100BF53B2 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1045C23A3B82100BF53B2 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,8 @@
 		005D7D5F237B545600B324CE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		005D7D61237B568600B324CE /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		005D7D64237B579C00B324CE /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		00AD784C23B6678D0057B887 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		00B1B6A723B124AF000713D8 /* test_location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = test_location.gpx; path = ../../../../../Volumes/profile/DenisChi/LVR/geo/test_location.gpx; sourceTree = "<group>"; };
 		00D1045C23A3B82100BF53B2 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +53,7 @@
 		005D7D3A237B36B400B324CE = {
 			isa = PBXGroup;
 			children = (
+				00B1B6A723B124AF000713D8 /* test_location.gpx */,
 				005D7D45237B36B400B324CE /* WeatherApp */,
 				005D7D44237B36B400B324CE /* Products */,
 			);
@@ -102,6 +106,7 @@
 			children = (
 				005D7D5F237B545600B324CE /* City.swift */,
 				005D7D61237B568600B324CE /* ResponseModel.swift */,
+				00AD784C23B6678D0057B887 /* SpinnerViewController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				005D7D60237B545600B324CE /* City.swift in Sources */,
 				005D7D5B237B4F2600B324CE /* NewCityViewController.swift in Sources */,
 				005D7D62237B568600B324CE /* ResponseModel.swift in Sources */,
+				00AD784D23B6678D0057B887 /* SpinnerViewController.swift in Sources */,
 				005D7D47237B36B400B324CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
